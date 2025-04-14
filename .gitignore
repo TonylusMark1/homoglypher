@@ -1,0 +1,14 @@
+# Directories
+node_modules/
+dist/
+
+# System-generated files
+.DS_Store
+Thumbs.db
+
+# Configs
+ppllm.config.json
+ppllm.prompt.hbs
+
+# Output file
+ppllm.prompt.txt

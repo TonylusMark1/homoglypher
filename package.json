@@ -1,0 +1,30 @@
+{
+  "name": "homoglypher",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./dist/index.js",
+  "author": "tonylus",
+  "license": "ISC",
+  "repository": "https://github.com/TonylusMark1/homoglypher",
+  "keywords": [
+    "homoglyph",
+    "string",
+    "unicode",
+    "normalization",
+    "confusable",
+    "ascii"
+  ],
+  "description": "Normalize homoglyphs to ASCII characters.",
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "cli-table3": "^0.6.5",
+    "string-width": "^7.2.0",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.2"
+  },
+  "scripts": {
+    "build": "tsup",
+    "prepare": "npm run build",
+    "postinstall": "node ./scripts/update-confusables.js"
+  }
+}

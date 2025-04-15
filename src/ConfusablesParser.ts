@@ -40,29 +40,32 @@ export class ConfusablesParser {
             const targetHex = parts[1].split(' ');
 
             const sourceChars = sourceHex
-                .map(hex => String.fromCodePoint(parseInt(hex, 16)))
-                .join('');
+                .map(hex => String.fromCodePoint(parseInt(hex, 16)));
 
             const targetChars = targetHex
-                .map(hex => String.fromCodePoint(parseInt(hex, 16)))
-                .join('');
+                .map(hex => String.fromCodePoint(parseInt(hex, 16)));
 
             //
 
-            const isTargetAscii = [...targetChars].every(char => char.charCodeAt(0) <= 0x7F);
-            const isSourceOnlyAscii = [...sourceChars].every(char => char.charCodeAt(0) <= 0x7F);
+            const isTargetAscii = targetChars.every(char => char.charCodeAt(0) <= 0x7F);
+            const isSourceOnlyAscii = sourceChars.every(char => char.charCodeAt(0) <= 0x7F);
 
             if (!isTargetAscii || isSourceOnlyAscii)
                 continue;
 
             //
 
-            this.mapping.set(sourceChars, targetChars);
+            const source = sourceChars.join('');
+            const target = targetChars.join('');
+
+            //
+
+            this.mapping.set(source, target);
 
             //
 
             if (sourceChars.length > this.maxSourceLength)
-                this.maxSourceLength = sourceChars.length;
+                this.maxSourceLength = source.length;
         }
     }
 

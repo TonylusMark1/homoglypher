@@ -39,4 +39,8 @@ export class Homoglypher {
 
         return output;
     }
+
+    public static FindReplacement(input: string) {
+        return this.parser.getReplacement(input);
+    }
 }

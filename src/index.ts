@@ -8,6 +8,7 @@ interface Options {
 
 interface NormalizeOptions {
     onChange?: (slice: string, replacement: string) => void;
+    skipCustom?: boolean;
 }
 
 //
@@ -51,7 +52,7 @@ export class Homoglypher {
 
             for (let len = sliceMax; len > 0; len--) {
                 const slice = input.slice(i, i + len);
-                const replacement = this.findReplacement(slice);
+                const replacement = this.findReplacement(slice, o?.skipCustom);
 
                 if (replacement !== undefined) {
                     o?.onChange?.(slice, replacement);
@@ -76,7 +77,7 @@ export class Homoglypher {
         return output;
     }
 
-    public findReplacement(input: string) {
-        return this.custom?.get(input) ?? Homoglypher.parser.getReplacement(input);
+    public findReplacement(input: string, skipCustom?: boolean) {
+        return (skipCustom ? this.custom?.get(input) : undefined) ?? Homoglypher.parser.getReplacement(input);
     }
 }

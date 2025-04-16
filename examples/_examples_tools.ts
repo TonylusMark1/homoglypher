@@ -5,11 +5,17 @@ import { Homoglypher } from '../src/index.js';
 
 //
 
+const homoglypher = new Homoglypher();
+
+//
+
 export function NormalizeAndVisualize(input: string) {
     const changes: Record<string, string> = {};
 
-    const normalized = Homoglypher.Normalize(input, (slice, replacement) => {
-        changes[slice] = replacement;
+    const normalized = homoglypher.normalize(input, {
+        onChange: (slice, replacement) => {
+            changes[slice] = replacement;
+        }
     });
 
     console.log("INPUT:     ", JSON.stringify(input));

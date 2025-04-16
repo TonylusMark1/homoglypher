@@ -64,7 +64,7 @@ export class ConfusablesParser {
 
             //
 
-            if (sourceChars.length > this.maxSourceLength)
+            if (source.length > this.maxSourceLength)
                 this.maxSourceLength = source.length;
         }
     }

@@ -4,8 +4,10 @@ Homoglypher is a utility library designed to normalize homoglyphs in strings to 
 
 ## Features
 
-- Detects and replaces Unicode homoglyphs with ASCII characters.
 - Utilizes the latest Unicode confusables list.
+- Detects and replaces Unicode homoglyphs with ASCII characters.
+- Allows custom mapping
+- Optional event handling for detecting changes
 
 ## Installation
 

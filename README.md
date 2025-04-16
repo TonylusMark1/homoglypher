@@ -13,17 +13,40 @@ Homoglypher is a utility library designed to normalize homoglyphs in strings to 
 npm install homoglypher
 ```
 
-Use again if you want to be sure that confusables.txt is up to date.
+Data in `confusables.txt` are automatically updated on install (via postinstall script).
 
 ## Usage
 
+Simple usage:
 ```typescript
 import { Homoglypher } from 'homoglypher';
 
+const homoglypher = new Homoglypher();
+
 const input = '𝓐𝓑𝓒 is fancy but should become ABC.';
-const normalized = Homoglypher.Normalize(input);
+const normalized = homoglypher.normalize(input);
 
 console.log(normalized); // Output: ABC is fancy but should become ABC.
+```
+
+Custom mapping:
+```typescript
+const homoglypher = new Homoglypher({
+  custom: { // can be ES6 Map too
+    'æ': 'ae'
+  }
+});
+```
+
+Event handling:
+```typescript
+const homoglypher = new Homoglypher();
+
+const normalized = homoglypher.normalize(input, {
+  onChange: (slice, replacement) => {
+    console.log(`Replaced "${slice}" → "${replacement}"`);
+  }
+});
 ```
 
 ## License

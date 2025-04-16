@@ -1,0 +1,8 @@
+# Directories
+node_modules/
+dist/
+dist-examples/
+
+# System-generated files
+.DS_Store
+Thumbs.db

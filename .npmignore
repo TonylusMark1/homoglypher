@@ -15,3 +15,4 @@ CHANGELOG.md
 TODO
 tsconfig.json
 tsup.config.ts
+tsup-examples.config.ts

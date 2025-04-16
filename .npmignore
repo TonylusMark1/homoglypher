@@ -8,6 +8,7 @@ Thumbs.db
 # Exclude files and folder to leave only essential files
 .git
 .vscode
+examples
 public
 src
 CHANGELOG.md

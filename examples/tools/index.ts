@@ -1,7 +1,7 @@
 import Table from 'cli-table3';
 import stringWidth from 'string-width';
 
-import { Homoglypher } from '../src/index.js';
+import { Homoglypher } from '../../src/index.js';
 
 //
 

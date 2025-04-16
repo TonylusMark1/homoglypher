@@ -78,6 +78,6 @@ export class Homoglypher {
     }
 
     public findReplacement(input: string, skipCustom?: boolean) {
-        return (skipCustom ? this.custom?.get(input) : undefined) ?? Homoglypher.parser.getReplacement(input);
+        return (!skipCustom ? this.custom?.get(input) : undefined) ?? Homoglypher.parser.getReplacement(input);
     }
 }

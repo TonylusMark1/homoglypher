@@ -2015,7 +2015,7 @@ var Homoglypher = class _Homoglypher {
       const sliceMax = Math.min(this.maxLen, input.length - i);
       for (let len = sliceMax; len > 0; len--) {
         const slice = input.slice(i, i + len);
-        const replacement = this.findReplacement(slice);
+        const replacement = this.findReplacement(slice, o?.skipCustom);
         if (replacement !== void 0) {
           o?.onChange?.(slice, replacement);
           output += replacement;
@@ -2031,8 +2031,8 @@ var Homoglypher = class _Homoglypher {
     }
     return output;
   }
-  findReplacement(input) {
-    return this.custom?.get(input) ?? _Homoglypher.parser.getReplacement(input);
+  findReplacement(input, skipCustom) {
+    return (skipCustom ? this.custom?.get(input) : void 0) ?? _Homoglypher.parser.getReplacement(input);
   }
 };
 

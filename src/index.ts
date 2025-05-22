@@ -2,18 +2,18 @@ import { ConfusablesParser } from './ConfusablesParser.js';
 
 //
 
-interface Options {
+export interface Options {
     custom?: Map<string, string> | Record<string, string>;
 }
 
-interface NormalizeOptions {
+export interface NormalizeOptions {
     onChange?: (slice: string, replacement: string) => void;
     skipCustom?: boolean;
 }
 
 //
 
-export class Homoglypher {
+export default class Homoglypher {
     private static readonly parser = new ConfusablesParser();
 
     //
@@ -52,7 +52,7 @@ export class Homoglypher {
 
         while (i < input.length) {
             // Zamiast za każdym razem od razu próbować wszystkich długości od maxLen do 1, najpierw sprawdź, czy aktualny znak w ogóle występuje jako początek jakiegokolwiek klucza w mapie.
-            
+
             if (!this.firstChars.has(input[i])) {
                 output += input[i];
                 i++;
@@ -98,3 +98,5 @@ export class Homoglypher {
         return (!skipCustom ? this.custom?.get(input) : undefined) ?? Homoglypher.parser.getReplacement(input);
     }
 }
+
+export { Homoglypher };

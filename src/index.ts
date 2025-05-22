@@ -1,4 +1,4 @@
-import { ConfusablesParser } from './ConfusablesParser.js';
+import { ConfusablesParser } from './ConfusablesParser/index.js';
 
 //
 

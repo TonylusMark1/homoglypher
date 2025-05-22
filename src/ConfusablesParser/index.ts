@@ -1,12 +1,4 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import * as url from 'url';
-
-//
-
-// @ts-ignore
-const script_filename = import.meta?.url ? url.fileURLToPath(import.meta.url) : __filename;
-const script_dirname = path.dirname(script_filename);
+import confusables from "./confusables.js";
 
 //
 
@@ -17,10 +9,7 @@ export class ConfusablesParser {
     //
 
     constructor() {
-        const filePath = path.join(script_dirname, '../..', 'assets', 'confusables.txt');
-        const fileContent = fs.readFileSync(filePath, 'utf-8');
-
-        const lines = fileContent.split('\n');
+        const lines = confusables.split('\n');
 
         //
 

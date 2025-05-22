@@ -19,12 +19,15 @@ export class Homoglypher {
     //
 
     private readonly custom: Map<string, string> = new Map();
+    private readonly firstChars: Set<string> = new Set();
     private readonly maxLen: number;
 
     //
 
     constructor(o?: Options) {
         this.custom = o?.custom instanceof Map ? o.custom : new Map(Object.entries(o?.custom ?? {}));
+
+        this.firstChars = new Set([...Homoglypher.parser.getMappingKeys(), ...this.custom.keys()].map(s => s[0]));
 
         //
 
@@ -43,15 +46,29 @@ export class Homoglypher {
 
         //
 
-        while (i < input.length) {
-            let matched = false;
+        const sliceMax = Math.min(this.maxLen, input.length - i);
 
-            const sliceMax = Math.min(this.maxLen, input.length - i);
+        //
+
+        while (i < input.length) {
+            // Zamiast za każdym razem od razu próbować wszystkich długości od maxLen do 1, najpierw sprawdź, czy aktualny znak w ogóle występuje jako początek jakiegokolwiek klucza w mapie.
+            
+            if (!this.firstChars.has(input[i])) {
+                output += input[i];
+                i++;
+                continue;
+            }
+
+            // dopiero teraz wchodzimy w pętlę po długościach slice’ów
+
+            //
+
+            let matched = false;
 
             //
 
             for (let len = sliceMax; len > 0; len--) {
-                const slice = input.slice(i, i + len);
+                const slice = input.substring(i, i + len);
                 const replacement = this.findReplacement(slice, o?.skipCustom);
 
                 if (replacement !== undefined) {
@@ -59,7 +76,7 @@ export class Homoglypher {
 
                     output += replacement;
                     i += len;
-                    
+
                     matched = true;
 
                     break;

@@ -15,7 +15,7 @@ export function NormalizeAndVisualize(input: string) {
     const normalized = homoglypher.normalize(input, {
         onChange: (slice, replacement) => {
             changes[slice] = replacement;
-        }
+        },
     });
 
     console.log("INPUT:     ", JSON.stringify(input));

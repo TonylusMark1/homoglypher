@@ -71,6 +71,10 @@ export class ConfusablesParser {
 
     //
 
+    public getMappingKeys() {
+        return this.mapping.keys();
+    }
+
     public getReplacement(source: string) {
         return this.mapping.get(source);
     }

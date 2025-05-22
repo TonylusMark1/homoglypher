@@ -4,7 +4,9 @@ import * as url from 'url';
 
 //
 
+// @ts-ignore
 __filename = __filename ?? url.fileURLToPath(import.meta.url);
+// @ts-ignore
 __dirname = __dirname ?? path.dirname(__filename);
 
 //
@@ -16,7 +18,7 @@ export class ConfusablesParser {
     //
 
     constructor() {
-        const filePath = path.join(__dirname, '..', 'assets', 'confusables.txt');
+        const filePath = path.join(__dirname, '../..', 'assets', 'confusables.txt');
         const fileContent = fs.readFileSync(filePath, 'utf-8');
 
         const lines = fileContent.split('\n');

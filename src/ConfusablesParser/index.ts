@@ -5,7 +5,7 @@ import * as url from 'url';
 //
 
 // @ts-ignore
-const script_filename = typeof import.meta ? url.fileURLToPath(import.meta.url) : __filename;
+const script_filename = import.meta?.url ? url.fileURLToPath(import.meta.url) : __filename;
 const script_dirname = path.dirname(script_filename);
 
 //

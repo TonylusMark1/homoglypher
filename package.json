@@ -34,6 +34,6 @@
     "build:examples": "tsup --config ./tsup-examples.config.ts",
     "build:all": "npm run build && npm run build:examples",
     "dev:updateconfusables": "node ./scripts/update-confusables.js",
-    "prepare": "npm run dev:updateconfusables && run build:all"
+    "prepare": "npm run dev:updateconfusables && npm run build:all"
   }
 }

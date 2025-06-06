@@ -1,6 +1,6 @@
 import {
   NormalizeAndVisualize
-} from "./common/index-IR5FU7QW.js";
+} from "./common/index-OQNJE4UZ.js";
 
 // examples/ligatures.ts
 NormalizeAndVisualize("office with \uFB01ne typography");

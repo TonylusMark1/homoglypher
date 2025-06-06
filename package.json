@@ -33,7 +33,7 @@
     "build": "tsup --config ./tsup.config.ts",
     "build:examples": "tsup --config ./tsup-examples.config.ts",
     "build:all": "npm run build && npm run build:examples",
-    "prepare": "npm run build:all",
-    "postinstall": "node ./scripts/update-confusables.js"
+    "dev:updateconfusables": "node ./scripts/update-confusables.js",
+    "prepare": "npm run dev:updateconfusables && run build:all"
   }
 }

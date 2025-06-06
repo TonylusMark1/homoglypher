@@ -12,7 +12,12 @@ const __dirname = path.dirname(__filename);
 
 const fileURL = 'https://www.unicode.org/Public/security/latest/confusables.txt';
 const outputFilename = 'confusables.ts';
-const outputPath = path.join(__dirname, '..', 'src/ConfusablesParser', outputFilename);
+const outputDir = path.resolve(__dirname, '../src/ConfusablesParser', outputFilename);
+const outputPath = path.resolve(outputDir, outputFilename);
+
+if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+}
 
 //
 
